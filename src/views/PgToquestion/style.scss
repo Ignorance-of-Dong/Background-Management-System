@@ -1,0 +1,19 @@
+.question-wrap-in {
+    width: 100%;
+    .question-wrap-title{
+        width: 100%;
+        // height: 50px;
+        background: lightblue;
+        line-height: 50px;
+        padding:5px 30px;
+        font-size: 20px;
+    }
+}
+.addABC {
+    position: absolute;
+    z-index: 9999999;
+}
+.shop{
+    position: relative;
+    z-index: 11;
+}

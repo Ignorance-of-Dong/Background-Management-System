@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+*{
+    margin:0;
+    padding:0;
+    font-size: .12rem;
+    box-sizing: border-box;
+}
+html{
+    /* font-size: calc(380/100*10vw) */
+}
+html,body,#root{
+    width: 100%;
+    height: 100%;
+}
+.wraper{
+    width: 100%;
+    height: 100%;
+}
+
+

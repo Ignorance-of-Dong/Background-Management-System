@@ -1,0 +1,22 @@
+.titles{
+  height: 50px;
+  background: #001529;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .titlr {
+    width: 85%;
+    height: 35px;
+    background: #ccc;
+    text-align: center;
+    line-height: 35px;
+    font-size: 18px;
+    font-weight: 800;
+    color:#001529;
+  }
+}
+.anmiytion {
+  position: absolute;
+  top: 10;
+  color: red;
+}
