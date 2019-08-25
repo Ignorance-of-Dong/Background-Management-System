@@ -10,16 +10,16 @@ import axios from 'axios'
  * updateActivelistFn 更新文章
  */
 let activelistFn = () => {
-  return axios.post('/active/activelist')
+  return axios.post('http://server.ignorantscholar.cn/active/activelist')
 }
 let addActivelistFn = (params) => {
-  return axios.post('/active/addActivelist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/addActivelist', params)
 }
 let removeActivelistFn = (params) => {
-  return axios.post('/active/removeActivelist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/removeActivelist', params)
 }
 let updateActivelistFn = (params) => {
-  return axios.post('/active/updateActivelist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/updateActivelist', params)
 }
 
 /**
@@ -27,16 +27,16 @@ let updateActivelistFn = (params) => {
  */
 
 let articlesListHotFn = () => {
-  return axios.post('/active/articlesListHot')
+  return axios.post('http://server.ignorantscholar.cn/active/articlesListHot')
 }
 let addHotActivelistFn = (params) => {
-  return axios.post('/active/hot/addActivelist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/hot/addActivelist', params)
 }
 let removeHotActivelistFn = (params) => {
-  return axios.post('/active/hot/removeActivelist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/hot/removeActivelist', params)
 }
 let updateHotActivelistFn = (params) => {
-  return axios.post('/active/hot/updateActivelist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/hot/updateActivelist', params)
 }
 
 /**
@@ -44,16 +44,16 @@ let updateHotActivelistFn = (params) => {
  */
 
 let bannerFn = () => {
-  return axios.post('/active/banner')
+  return axios.post('http://server.ignorantscholar.cn/active/banner')
 }
 let addbannerFn = (params) => {
-  return axios.post('/active/addbanner', params)
+  return axios.post('http://server.ignorantscholar.cn/active/addbanner', params)
 }
 let removebannerFn = (params) => {
-  return axios.post('/active/removebanner', params)
+  return axios.post('http://server.ignorantscholar.cn/active/removebanner', params)
 }
 let updatebannerFn = (params) => {
-  return axios.post('/active/updatebanner', params)
+  return axios.post('http://server.ignorantscholar.cn/active/updatebanner', params)
 }
 
 /**
@@ -61,16 +61,16 @@ let updatebannerFn = (params) => {
  */
 
 let questionFn = () => {
-  return axios.post('/active/questionlist')
+  return axios.post('http://server.ignorantscholar.cn/active/questionlist')
 }
 let addquestionFn = (params) => {
-  return axios.post('/active/addquestion', params)
+  return axios.post('http://server.ignorantscholar.cn/active/addquestion', params)
 }
 let removequestionFn = (params) => {
-  return axios.post('/active/removequestionlist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/removequestionlist', params)
 }
 let updatequestionFn = (params) => {
-  return axios.post('/active/updatequestionlist', params)
+  return axios.post('http://server.ignorantscholar.cn/active/updatequestionlist', params)
 }
 
 

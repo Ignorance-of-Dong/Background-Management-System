@@ -2,6 +2,7 @@ import React from 'react'
 import './style.scss'
 import { Table, Divider, Tag, Button, Modal, Input, Form, Popover } from 'antd';
 // import Tree from '../../common/component/index'
+import Ed from '../../common/edite'
 const { confirm } = Modal;
 import {
     questionFn,
@@ -28,8 +29,15 @@ class PgSetQuestion extends React.Component {
                 dataIndex: 'question',
                 render: (question, c) => <Popover  title="点击访问详情" trigger="hover"><div className='question-l' onClick={() => {
                     console.log(c)
-                    this.props.history.push(`/questiondetails?question=${c.question}&answer=${c.answer}`)
-                }}>{question}</div></Popover>,
+                    //`/questiondetails?&`
+                    this.props.history.push({
+                        pathname:'/questiondetails',
+                        state: {
+                            question:c.question,
+                            answer:c.answer
+                        }
+                    })
+                }} dangerouslySetInnerHTML={{ __html:question}}>{}</div></Popover>,
             },
             {
                 title: '操作',
@@ -157,20 +165,25 @@ class PgSetQuestion extends React.Component {
           </Button>
             </div>
             <Modal
+                className='addInputs'
                 title="添加问题"
                 visible={addVisible}
                 onOk={this.AddhandleOk}
                 confirmLoading={confirmLoading}
                 onCancel={this.AddhandleCancel}
             >
-                <div className="addInput">
-                    <Form {...formItemLayout}>
+                <div className="addInputs">
+                <Ed onChange={(e) => {
+                    this.setState({ question: e })
+                }}/>
+                    {/* <Form {...formItemLayout}>
+                        
                         <Form.Item label="问题">
                             <Input value={this.state.question} onChange={(e) => {
                                 this.setState({ question: e.target.value })
                             }} />
                         </Form.Item>
-                    </Form>
+                    </Form> */}
                 </div>
             </Modal>
             <Modal
@@ -181,13 +194,9 @@ class PgSetQuestion extends React.Component {
                 onCancel={this.UpDhandleCancel}
             >
                 <div className="addInput">
-                    <Form {...formItemLayout}>
-                        <Form.Item label="广告图链接">
-                            <Input value={this.state.question} onChange={(e) => {
-                                this.setState({ question: e.target.value })
-                            }} />
-                        </Form.Item>
-                    </Form>
+                <Ed onChange={(e) => {
+                    this.setState({ question: e })
+                }}/>
                 </div>
             </Modal>
             <Table columns={columns} dataSource={activelist} />

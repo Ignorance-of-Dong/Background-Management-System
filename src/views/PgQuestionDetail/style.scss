@@ -4,8 +4,10 @@
 }
 .question-wrap {
     width: 100%;
-    height: 200px;
+    // height: 200px;
+    padding: 30px;
     overflow-y: auto;
-    background: #ccc;
+    background: #555;
     border-radius: 5px;
+    color: #fff;
 }

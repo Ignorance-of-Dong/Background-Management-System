@@ -15,7 +15,9 @@ class Ed extends Component<any, any> {
         const editor = new E(elemMenu, elemBody)
         // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
         editor.customConfig.onchange = html => {
-            console.log(editor.txt.html())
+            
+            // editor.txt = 1
+            // console.log(editor.txt)
             this.props.onChange(editor.txt.html())
             this.setState({
                 // editorContent: editor.txt.text()

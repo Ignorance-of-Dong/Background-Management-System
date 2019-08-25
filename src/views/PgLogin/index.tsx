@@ -9,7 +9,7 @@ const onClose = e => {
 function showDeleteConfirm(props) {
   confirm({
     title: '你确定要去答题吗?',
-    content: '这里有一些题目需要你解答，获取会有一些难度，加油！',
+    content: '这里有一些题目需要你解答，获取会有一些难度，注意！！！如果开始答题，请勿刷新浏览器，否则会回到第一题，请在方便的时候作答，一气呵成，加油！',
     okText: '我要答题',
     okType: 'danger',
     cancelText: '我要放弃',

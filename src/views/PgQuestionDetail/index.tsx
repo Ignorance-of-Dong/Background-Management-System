@@ -10,21 +10,25 @@ function query () {
     var obj = {};//声明对象
     for (var i = 0; i < params.length; i++) {
         var param = params[i].split("=");
-        obj[param[0]] = decodeURIComponent(param[1]);//为对象赋值
+        obj[param[0]] = param[1];//为对象赋值
     }
     return obj;
 }
-function PgQuestionDetail() {
-    let details: any = query()
+function PgQuestionDetail(props) {
+    console.log(props)
+    // let details: any = query()
+    // console.log(decodeURIComponent(details.answer))
+    let details = props.location.state
     return(
         <>
             <div className='question-title'>题目</div>
-            <div className="question-wrap">
-                {JSON.stringify(query()) != 'null' ? details.question : ''}
+            <div className="question-wrap" dangerouslySetInnerHTML={{ __html:details.question}}>
+                {/* {JSON.stringify(query()) != 'null' ? details.question : ''} */}
+                {}
             </div>
             <div className='question-title'>答案</div>
-            <div className="question-wrap">
-                {JSON.stringify(query()) != 'null' ? details.answer: ''}
+            <div className="question-wrap" dangerouslySetInnerHTML={{ __html:details.answer}}>
+                {}
             </div>
         </>
     )
