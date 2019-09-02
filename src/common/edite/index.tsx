@@ -15,7 +15,7 @@ class Ed extends Component<any, any> {
         // elemBody.onPaste
         // document.body.onpaste
         document.getElementsByClassName('editorElem-body')[0].onpaste = function () {
-            
+
         }
         const editor = new E(elemMenu, elemBody)
         // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
@@ -73,7 +73,6 @@ class Ed extends Component<any, any> {
 
                     </div>
                 </div>
-                <input type="range" name="" id=""/>
             </div>
         );
     }

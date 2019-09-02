@@ -25,17 +25,32 @@ class PgToquestion extends React.Component {
         count: 0,
         questionContent: {},
         errorMsg: '',
-        visible: false
+        visible: false,
+        serialNumber: 0
     };
+    componentWillMount() {
+        let sn: any = sessionStorage.getItem('serialNumber')
+        if (sn) {
+            this.setState({
+                serialNumber: sn * 1
+            })
+        } else {
+            sessionStorage.setItem('serialNumber', '0')
+            this.setState({
+                serialNumber: 0
+            })
+        }
+    }
     componentDidMount() {
+        let { serialNumber } = this.state
         questionFn().then(res => {
             this.setState({
                 questionlist: res.data,
             }, () => {
                 this.setState({
-                    question: this.state.questionlist[0].question,
-                    id: this.state.questionlist[0].id,
-                    answer: this.state.questionlist[0].answer
+                    question: this.state.questionlist[serialNumber].question,
+                    id: this.state.questionlist[serialNumber].id,
+                    answer: this.state.questionlist[serialNumber].answer
                 })
             })
         })
@@ -59,7 +74,7 @@ class PgToquestion extends React.Component {
                     answer
                 }
                 updatequestionFn(params).then(() => {
-                    this.success()
+                    that.success()
                 })
             },
             onCancel() {
@@ -81,17 +96,24 @@ class PgToquestion extends React.Component {
     nextPage() {
 
         if (this.state.isgoheight) {
-            if (this.state.count >= this.state.questionlist.length - 1) {
+            if (this.state.serialNumber >= this.state.questionlist.length - 1) {
                 // alert('没有提了')
                 this.warning()
                 return
             }
+            sessionStorage.setItem('serialNumber', (this.state.serialNumber + 1).toString())
             this.setState({
-                isgoheight: false,
-                question: this.state.questionlist[this.state.count + 1].question,
-                count: this.state.count + 1,
-                id: this.state.questionlist[this.state.count + 1].id
+                serialNumber: this.state.serialNumber + 1
+            }, () => {
+                let { serialNumber } = this.state
+                this.setState({
+                    isgoheight: false,
+                    question: this.state.questionlist[serialNumber].question,
+                    count: serialNumber,
+                    id: this.state.questionlist[serialNumber].id
+                })
             })
+
         } else {
             // alert('')
             this.error()
@@ -101,6 +123,32 @@ class PgToquestion extends React.Component {
     handleClose = () => {
         this.setState({ visible: false });
     };
+
+    lastPage = () => {
+        if (this.state.isgoheight) {
+            if (this.state.serialNumber <= 0) {
+                // alert('没有提了')
+                this.warning()
+                return
+            }
+            sessionStorage.setItem('serialNumber', (this.state.serialNumber - 1).toString())
+            this.setState({
+                serialNumber: this.state.serialNumber - 1
+            }, () => {
+                let { serialNumber } = this.state
+                this.setState({
+                    isgoheight: false,
+                    question: this.state.questionlist[serialNumber].question,
+                    count: serialNumber,
+                    id: this.state.questionlist[serialNumber].id
+                })
+            })
+
+        } else {
+            this.error()
+            return
+        }
+    }
     render() {
         const { addVisible, updataVisible, confirmLoading, ModalText, columns, activelist, question } = this.state;
         return <div className='addActive-wrap'>
@@ -125,11 +173,17 @@ class PgToquestion extends React.Component {
                 <Button type="danger" block onClick={() => {
                     this.nextPage()
                 }}>
-                    下一页
+                    下一题
+                </Button>
+            </div>
+            <div className="addAC">
+                <Button type="danger" block onClick={() => {
+                    this.lastPage()
+                }}>
+                    上一题
                 </Button>
             </div>
             <div>
-
             </div>
         </div>
     }
