@@ -12,12 +12,15 @@ class Ed extends Component<any, any> {
     componentDidMount() {
         const elemMenu = this.refs.editorElemMenu;
         const elemBody = this.refs.editorElemBody;
+        // elemBody.onPaste
+        // document.body.onpaste
+        document.getElementsByClassName('editorElem-body')[0].onpaste = function () {
+            
+        }
         const editor = new E(elemMenu, elemBody)
         // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
         editor.customConfig.onchange = html => {
-            
-            // editor.txt = 1
-            // console.log(editor.txt)
+            console.log(editor.txt.html())
             this.props.onChange(editor.txt.html())
             this.setState({
                 // editorContent: editor.txt.text()
@@ -70,6 +73,7 @@ class Ed extends Component<any, any> {
 
                     </div>
                 </div>
+                <input type="range" name="" id=""/>
             </div>
         );
     }
