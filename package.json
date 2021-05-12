@@ -68,7 +68,7 @@
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
     "swipe-js-iso": "^2.1.4",
-    "swiper": "^4.4.6",
+    "swiper": "^6.5.1",
     "terser-webpack-plugin": "1.1.0",
     "typescript": "^3.5.2",
     "url-loader": "1.1.1",
